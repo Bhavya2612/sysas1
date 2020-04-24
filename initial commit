@@ -9,9 +9,21 @@ sudo useradd airforcechief -m -s /bin/bash
 for  i in {1..50}
 do
         sudo useradd army$i -m -s /bin/bash
+       
+done
+
+for  i in {1..50}
+do
         sudo useradd navy$i -m -s /bin/bash
+
+done
+for  i in {1..50}
+do
+       
         sudo useradd airforce$i -m -s /bin/bash
 done
+
+echo "users created successfully!"
 
 
 for i in {1..50}
@@ -40,29 +52,3 @@ do
 done
 
 
-downloading log file
-wget -O etc https://inductions.delta.nitt.edu/sysad-task1-position.log
-
-
-match=$(date "+%y-%m-%d")
-
-
-for i in {1..50}
-do
-    sudo touch /home/army$i/post_alloted
-    sudo cat etc | grep -w "army$i" | grep -w "^+$match" | cut -d " " -f 1,4,5 > /home/army$i/post_alloted
-    
-    sudo touch /home/navy$i/post_alloted
-    sudo cat etc | grep -w "navy$i" | grep -w "^+$match" | cut -d " " -f 1,4,5 > /home/navy$i/post_alloted
-    
-    sudo touch /home/airforce$i/post_alloted
-    sudo cat etc | grep -w "airforce$i" | grep -w "^+$match" | cut -d " " -f 1,4,5 > /home/airforce$i/post_alloted
-done
-
-
-wget -O attendance https://inductions.delta.nitt.edu/sysad-task1-attendance.log
-
-
-sudo touch /home/armygen/attd_record
-sudo touch /home/navymarshall/attd_record
-sudo touch /home/airforcechief/attd_record
